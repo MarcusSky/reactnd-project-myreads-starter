@@ -19,7 +19,13 @@ class BooksApp extends React.Component {
   }
 
   fetchData() {
-    BooksAPI.getAll().then((books) => { this.filterBooks(books) });
+    BooksAPI.getAll().then((books) => { this.updateState(books) });
+  }
+
+  updateState(books) {
+    const {currentlyReading, wantToRead, read} = this.filterBooks(books);
+
+    this.setState({books: { currentlyReading, wantToRead, read }})
   }
 
   filterBooks(books) {
@@ -27,7 +33,7 @@ class BooksApp extends React.Component {
     const wantToRead = books.filter((book) => book.shelf == "wantToRead")
     const read = books.filter((book) => book.shelf == "read")
 
-    this.setState({books: { currentlyReading, wantToRead, read }})
+    return {currentlyReading, wantToRead, read};
   }
 
   render() {
@@ -42,7 +48,6 @@ class BooksApp extends React.Component {
             title="Currently Reading" />
 
           <Bookshelf
-            books={[1,2,3,4]}
             books={this.state.books.wantToRead}
             title="Want to Read" />
 
