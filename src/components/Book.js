@@ -9,15 +9,15 @@ class Book extends PureComponent {
     return (
       <div className="book">
         <div className="book-top">
-          <BookCover
-            width={this.props.width}
-            height={this.props.height}
-            bookCoverUrl={this.props.bookCoverUrl}
-          />
+          <BookCover bookCoverUrl={this.props.bookCoverUrl} />
           <ShelfChanger />
         </div>
         <div className="book-title">{this.props.bookName}</div>
-        <div className="book-authors">{this.props.bookAuthor}</div>
+        <div className="book-authors">
+        {this.props.bookAuthors.map((author) => (
+          <span>{author}</span>
+        ))}
+        </div>
     </div>);
   }
 }
@@ -25,9 +25,7 @@ class Book extends PureComponent {
 Book.propTypes = {
   bookCoverUrl: PropTypes.string.isRequired,
   bookName: PropTypes.string.isRequired,
-  bookAuthor: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired
+  bookAuthors: PropTypes.array.isRequired,
 }
 
 export default Book;

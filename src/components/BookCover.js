@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 
 class BookCover extends PureComponent {
   render() {
-    const width = this.props.width;
-    const height = this.props.height;
     const bookCoverUrl = this.props.bookCoverUrl;
 
     const style = {
-      width: width,
-      height: height,
+      width: "100%",
+      height: "100%",
+      "background-size": "100% 100%",
       backgroundImage: "url(" + bookCoverUrl + ")"
     }
 
@@ -20,8 +19,6 @@ class BookCover extends PureComponent {
 }
 
 BookCover.propTypes = {
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
   bookCoverUrl: PropTypes.string.isRequired,
 }
 
