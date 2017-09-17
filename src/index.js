@@ -1,6 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+import { BrowserRouter, Route } from 'react-router-dom'
 import './index.css'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+import App from './App'
+import SearchBar from './components/SearchBar';
+
+ReactDOM.render((
+  <BrowserRouter>
+    <div>
+      <Route exact path="/" component={App} />
+      <Route path="/search" component={SearchBar} />
+    </div>
+  </BrowserRouter>
+), document.getElementById('root'))
