@@ -4,13 +4,13 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import './index.css'
 
 import App from './App'
-import SearchBar from './components/SearchBar';
+import SearchPage from './SearchPage';
 
 ReactDOM.render((
   <BrowserRouter>
     <div>
       <Route exact path="/" component={App} />
-      <Route path="/search" component={SearchBar} />
+      <Route path="/search" component={SearchPage} />
     </div>
   </BrowserRouter>
 ), document.getElementById('root'))

@@ -15,7 +15,7 @@ class Book extends PureComponent {
         <div className="book-title">{this.props.bookName}</div>
         <div className="book-authors">
         {this.props.bookAuthors.map((author) => (
-          <span>{author}</span>
+          <span key={author}>{author}</span>
         ))}
         </div>
     </div>);

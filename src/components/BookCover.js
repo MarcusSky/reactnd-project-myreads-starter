@@ -8,7 +8,7 @@ class BookCover extends PureComponent {
     const style = {
       width: "100%",
       height: "100%",
-      "background-size": "100% 100%",
+      backgroundSize: "100% 100%",
       backgroundImage: "url(" + bookCoverUrl + ")"
     }
 
