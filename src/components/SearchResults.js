@@ -15,11 +15,11 @@ class SearchResults extends PureComponent {
     return (
       <div className="search-books-results">
         <ol className="books-grid">
-        {this.props.books.map((book)=> (
+        {this.props.searchBooks.map((book)=> (
           <li key={book.id}>
             <Book
               onShelfChange={this.onShelfChange}
-              currentShelf={book.shelf}
+              currentShelf={book.shelf || "none"}
               bookId={book.id}
               bookName={book.title}
               bookAuthors={book.authors || []}
@@ -32,6 +32,7 @@ class SearchResults extends PureComponent {
 }
 
 SearchResults.propTypes = {
+  searchBooks: PropTypes.array.isRequired
 }
 
 export default SearchResults;
