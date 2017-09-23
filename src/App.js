@@ -18,6 +18,10 @@ class BooksApp extends React.Component {
     this.fetchData();
   }
 
+  onShelfChange = (bookId, shelfName) => {
+    BooksAPI.update({id: bookId}, shelfName).then((_) => { this.fetchData() })
+  }
+
   fetchData() {
     BooksAPI.getAll().then((books) => { this.updateState(books) });
   }
@@ -29,9 +33,9 @@ class BooksApp extends React.Component {
   }
 
   filterBooks(books) {
-    const currentlyReading = books.filter((book) => book.shelf == "currentlyReading")
-    const wantToRead = books.filter((book) => book.shelf == "wantToRead")
-    const read = books.filter((book) => book.shelf == "read")
+    const currentlyReading = books.filter((book) => book.shelf === "currentlyReading")
+    const wantToRead = books.filter((book) => book.shelf === "wantToRead")
+    const read = books.filter((book) => book.shelf === "read")
 
     return {currentlyReading, wantToRead, read};
   }
@@ -44,14 +48,17 @@ class BooksApp extends React.Component {
         </div>
         <div className="list-books-content">
           <Bookshelf
+            onShelfChange={this.onShelfChange}
             books={this.state.books.currentlyReading}
             title="Currently Reading" />
 
           <Bookshelf
+            onShelfChange={this.onShelfChange}
             books={this.state.books.wantToRead}
             title="Want to Read" />
 
           <Bookshelf
+            onShelfChange={this.onShelfChange}
             books={this.state.books.read}
             title="Read" />
         </div>
