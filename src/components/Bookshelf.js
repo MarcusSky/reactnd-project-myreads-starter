@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 import Book from './Book';
 
 class Bookshelf extends PureComponent {
+  onShelfChange = (bookId, shelfName) => {
+    this.props.onShelfChange(bookId, shelfName)
+  }
+
   render() {
     return (
       <div>
@@ -12,8 +16,11 @@ class Bookshelf extends PureComponent {
           <div className="bookshelf-books">
             <ol className="books-grid">
             {this.props.books.map((book) => (
-              <li>
+              <li key={book.id}>
                 <Book
+                  onShelfChange={this.onShelfChange}
+                  currentShelf={book.shelf}
+                  bookId={book.id}
                   bookName={book.title}
                   bookAuthors={book.authors}
                   bookCoverUrl={book.imageLinks.thumbnail} />
