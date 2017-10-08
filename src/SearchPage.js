@@ -31,10 +31,16 @@ class SearchPage extends Component {
   }
 
   filterBooks(searchBooks) {
-    const currentBooksIds = this.state.currentBooks.map((x) => (x.id));
-    const difference = searchBooks.filter(x => !currentBooksIds.includes(x.id));
+    const currentBooks = this.state.currentBooks.map((x) => ({id: x.id, shelf: x.shelf}));
+    const updatedSearchBooks = searchBooks.map((searchBook) => {
+      const currentBook = currentBooks.find((y) => (y.id === searchBook.id))
 
-    return difference;
+      if (currentBook) { searchBook.shelf = currentBook.shelf }
+
+      return searchBook;
+    });
+
+    return updatedSearchBooks;
   }
 
   render() {
