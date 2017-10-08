@@ -52,7 +52,4 @@ class SearchPage extends Component {
   }
 }
 
-SearchPage.propTypes = {
-}
-
 export default SearchPage;
