@@ -14,7 +14,8 @@ class Book extends PureComponent {
       <div className="book">
         <div className="book-top">
           <BookCover bookCoverUrl={this.props.bookCoverUrl} />
-          <ShelfChanger bookId={this.props.bookId}
+          <ShelfChanger
+            bookId={this.props.bookId}
             currentShelf={this.props.currentShelf}
             onShelfChange={this.onShelfChange}
           />
